@@ -6,27 +6,56 @@
    <link rel="stylesheet" href="/css/style.css">
     <title>Aplicación Presupuesto</title>
 </head>
-<body>
+<body onload="cargarApp()">
     <div class="cabecero">
         <div class="presupuesto">
             <div class="presupuesto_titulo">
                 Presupuesto Disponible
             </div>
-            <div class="presupuesto_valor">
+            <div class="presupuesto_valor" id="presupuesto">
                 2000
             </div>
             <div class="presupuesto_ingreso limpiarEstilos">
                 <div class="presupuesto_ingreso--texto">Ingresos</div>
                 <div class="derecha">
-                    <div class="presupuesto_ingreso--valor">+4000</div>
+                    <div class="presupuesto_ingreso--valor" id="ingresos">+4000</div>
                     <div class="presupuesto_ingreso--porcentaje"></div>
                 </div>
             </div>
             <div class="presupuesto_egreso limpiarEstilos">
                 <div class="presupuesto_egreso--texto">Egresos</div>
                 <div class="derecha limpiarEstilos">
-                    <div class="presupuesto_egreso--valor">-1000</div>
-                    <div class="presupuesto_egreso--porcentaje">45%</div>
+                    <div class="presupuesto_egreso--valor" id="egresos">-1000</div>
+                    <div class="presupuesto_egreso--porcentaje" id="porcentaje">45%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenedor limpiarEstilos">
+        <div class="ingreso">
+            <h2 class="ingreso_titulo">Ingresos</h2>
+            <div id="lista-ingresos">
+                <div class="elemento limpiarEstilos">
+                    <div class="elemeneto_descripcion">Salario</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">2,200.00</div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar--btn">
+                                <icon-icon name="close-circle-outline"></icon-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="elemento limpiarEstilos">
+                    <div class="elemeneto_descripcion">Venta Coche</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">1,500.00</div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar--btn">
+                                <icon-icon name="close-circle-outline"></icon-icon>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,5 +65,7 @@
     <script src="/js/Dato.js"></script>
     <script src="/js/Egreso.js"></script>
     <script src="/js/Ingreso.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+
 </body>
 </html>
