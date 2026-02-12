@@ -11,6 +11,7 @@ const egresos = [
 let cargarApp = ()=>{
     cargarCabecero();
     cargarIngresos();
+    cargarEgresos();
 }
 let totalIngresos = ()=>{
     let totalIngreso = 0;
@@ -59,10 +60,47 @@ const crearIngresosHML = ()=>{
                         <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                         <div class="elemento_eliminar">
                             <button type="button" class="elemento_eliminar--btn">
-                                <ion-icon name="close-circle-outline"></ion-icon>
+                                <ion-icon name="close-circle-outline" onclick='eliminarIngreso(${ingreso.id})'></ion-icon>
                             </button>
                         </div>
                     </div>
                 </div>`;
                 return ingresoHTML;
+}
+
+const eliminarIngreso = ()=>{
+    let indiceEliminar = ingresos.findIndex(ingreso => ingreso.id === id);
+    ingresos.splice(indiceEliminar, 1);
+    cargarCabecero();
+    cargarIngresos();
+}
+const cargarEgresos = ()=>{
+    let egresosHTML = '';
+    for (let egreso of egresos){
+        egresosHTML += crearEgresoHTML(egreso);
+    }
+    document.getElementById('lista-egresos').innerHTML = egresosHTML;
+
+}
+const crearEgresoHTML = (egreso)=>{
+let egresoHTML = `
+<div class="elemento limpiarEstilos">
+                    <div class="elemento_descripcion">${egreso.descripcion}</div>
+                    <div class="derecha limpiarEstilos">
+                        <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
+                        <div class="elemento_porcentaje">${formatoPorcentaje(egreso.valor/totalEgresos())}</div>
+                        <div class="elemento_eliminar">
+                            <button type="button" class="elemento_eliminar--btn">
+                                <ion-icon name="close-circle-outline" onclick='eliminarEgreso(${egreso.id})></ion-icon>
+                        </button>
+                        </div>
+                    </div>
+                </div>`;
+                return egresoHTML;
+}
+let eliminarEgreso = (id)=>{
+    let indiceEliminar = egresos.findIndex(egreso.id === id);
+    egresos.splice(indiceEliminar, 1);
+    cargarCabecero();
+    cargarEgresos();
 }
